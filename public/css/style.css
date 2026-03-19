@@ -1,0 +1,403 @@
+
+/* =========================================
+   1. VARIABLES & RESET DE BASE
+========================================= */
+
+:root {
+    /* --- Couleurs Officielles --- */
+    --sorbonne-navy: #003366; /* Bleu foncé principal (Sorbonne) */
+    --sorbonne-sky: #66CCFF;  /* Bleu ciel accent (Sorbonne, optionnel) */
+    
+    --guinea-red: #E21B22;   /* Rouge (Guinée) */
+    --guinea-yellow: #FEDA1D; /* Jaune (Guinée, plus doré/professionnel) */
+    --guinea-green: #00994C;  /* Vert (Guinée) */
+    
+    /* --- Palette de Structure (Application professionnelle) --- */
+    --primary-color: var(--sorbonne-navy); /* Le bleu marine est la structure principale */
+    --secondary-color: var(--guinea-red);  /* Le rouge est l'accent d'action */
+    --accent-color: var(--guinea-green);   /* Le vert pour des touches de succès */
+    --culture-color: var(--guinea-yellow); /* Le jaune pour la culture */
+    
+    /* --- Fonds et Texte --- */
+    --text-color: #333333;
+    --text-light: #ffffff;
+    --light-bg: #f8f9fa; /* Gris très léger pour le professionnalisme */
+    --white: #ffffff;
+    
+    /* Polices */
+    --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ... le reste de ton CSS de base reste identique ... */
+
+/* On enlève les marges par défaut de tous les navigateurs */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    color: var(--text-color);
+    line-height: 1.6; /* Espace entre les lignes pour la lisibilité */
+    background-color: var(--white);
+}
+
+/* =========================================
+   2. CLASSES UTILITAIRES GLOBALES
+========================================= */
+
+/* Le container centre le contenu et limite sa largeur */
+.container {
+    max-width: 1200px; /* Le site ne s'étirera pas plus que ça sur grand écran */
+    margin: 0 auto;    /* Centre le bloc au milieu de l'écran */
+    padding: 0 20px;   /* Garde de l'espace sur les côtés sur mobile */
+}
+
+/* Pour centrer le texte rapidement */
+.text-center {
+    text-align: center;
+}
+
+/* Espacement standard pour nos sections */
+.section-padding {
+    padding: 60px 0;
+}
+
+/* Fond gris clair rapide */
+.bg-light {
+    background-color: var(--light-bg);
+}
+
+/* Titres de sections */
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: var(--primary-color);
+}
+
+/* =========================================
+   3. BOUTONS (Boutons d'action)
+========================================= */
+.btn {
+    display: inline-block;
+    padding: 10px 25px;
+    text-decoration: none;
+    border-radius: 5px; /* Bords légèrement arrondis */
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Animation fluide au survol */
+}
+
+/* Bouton principal (Fond bleu) */
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: 2px solid var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color); /* Devient rouge de la Guinée au survol */
+    border-color: var(--secondary-color);
+}
+
+/* Bouton secondaire (Transparent avec contour bleu) */
+.btn-secondary {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+/* =========================================
+   4. EN-TÊTE & NAVIGATION (Header)
+========================================= */
+header {
+    background-color: var(--white);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Petite ombre légère sous le menu */
+    position: sticky; /* Le menu reste collé en haut quand on descend sur la page */
+    top: 0;
+    z-index: 1000; /* S'assure que le menu passe toujours par-dessus le reste */
+}
+
+.navbar {
+    display: flex; /* La fameuse magie Flexbox ! */
+    justify-content: space-between; /* Pousse le logo à gauche et le menu à droite */
+    align-items: center; /* Centre tout verticalement */
+    height: 80px;
+}
+
+/* Le Logo */
+.logo a {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+/* Ajustement pour le logo image */
+#site-logo {
+    height: 50px; /* Ajuste la hauteur selon tes besoins pour que ça rentre bien dans la barre */
+    width: auto; /* Conserve les proportions de l'image */
+    display: block; /* Évite les espaces indésirables en bas de l'image */
+}
+
+/* On ajuste aussi un peu le parent .logo pour que Flexbox centre bien verticalement */
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+/* La liste des liens */
+.nav-links {
+    display: flex; /* Aligne les liens horizontalement */
+    list-style: none; /* Enlève les fameux gros points noirs de la liste */
+}
+
+.nav-links li {
+    margin-left: 30px; /* Espace entre chaque lien */
+}
+
+.nav-links a {
+    text-decoration: none; /* Enlève le trait de soulignement des liens */
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+/* Effet au passage de la souris ET pour la page active */
+.nav-links a:hover, 
+.nav-links a.active {
+    color: var(--secondary-color); 
+}
+
+/* On cache le bouton burger sur les grands écrans */
+.hamburger {
+    display: none;
+}
+/* =========================================
+   5. SECTION BANNIÈRE (HERO)
+========================================= */
+.hero {
+    /* L'astuce magique : un dégradé bleu Sorbonne semi-transparent par-dessus l'image */
+    background-image: linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 51, 102, 0.7)), url('../assets/icons/images/sorbonne-bg.jpeg');
+    background-size: cover; /* L'image couvre tout l'espace sans se déformer */
+    background-position: center; /* On centre l'image */
+    padding: 140px 0; /* On augmente un peu l'espace pour bien voir la photo */
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    color: var(--white); /* Le titre passe en blanc pour ressortir sur le fond sombre */
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* Une petite ombre pour détacher le texte */
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 900px;
+    margin: 0 auto 30px auto;
+    color: var(--white); /* Le texte passe en blanc aussi */
+    opacity: 0.9; /* Légèrement adouci pour l'élégance */
+}
+
+/* Les boutons dans .hero s'ajustent automatiquement car .btn utilise var(--primary-color) et var(--secondary-color) */
+/* On va juste inverser le bouton secondaire pour qu'il soit bien visible sur le fond sombre */
+.hero .btn-secondary {
+    color: var(--white);
+    border-color: var(--white);
+}
+
+.hero .btn-secondary:hover {
+    background-color: var(--white);
+    color: var(--primary-color);
+}
+/* =========================================
+   6. GRILLES (Nos Missions & Événements)
+========================================= */
+.grid-3-cols, .grid-2-cols {
+    display: grid;
+    gap: 30px;
+}
+
+.grid-3-cols {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-2-cols {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* --- Design des Cartes (Missions) --- */
+.card {
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    text-align: center;
+    transition: transform 0.3s ease;
+    border: 1px solid transparent; /* Prêt pour une bordure au survol */
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0,0,0,0.05);
+}
+
+.card-icon {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+}
+
+/* LA TOUCHE DE MAGIE RÉVOLUTIONNAIRE : 
+   Chaque titre de mission prend une couleur de la Guinée ! */
+.missions .card:nth-child(1) h3 { color: var(--guinea-red); }   /* Entraide */
+.missions .card:nth-child(2) h3 { color: var(--guinea-yellow); } /* Réussite */
+.missions .card:nth-child(3) h3 { color: var(--guinea-green); }  /* Culture */
+
+.card p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* --- Design des Événements (Aperçu) --- */
+.event-card {
+    background-color: var(--white);
+    border-left: 5px solid var(--guinea-red); /* Barre rouge d'accent (Barre de temps) */
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* =========================================
+   7. SECTION METTANT EN AVANT LE GUIDE (Le Guide Teaser)
+========================================= */
+.guide-teaser {
+    /* TRANSFORMATION : On met le fond en bleu Sorbonne pour un break professionnel */
+    background-color: var(--sorbonne-navy); 
+    color: var(--text-light); /* Le texte passe en blanc */
+    padding: 80px 0;
+}
+
+.guide-teaser h2 {
+    font-size: 2.5rem;
+    color: var(--text-light); /* Titre blanc */
+}
+
+.guide-teaser p {
+    color: rgba(255,255,255,0.8); /* Texte blanc légèrement adouci */
+}
+
+/* On s'assure que le bouton dans cette section reste visible */
+.guide-teaser .btn-primary {
+    background-color: var(--guinea-red); /* Le bouton passe en rouge Guinée pour un gros appel à l'action */
+    border-color: var(--guinea-red);
+}
+
+.guide-teaser .btn-primary:hover {
+    background-color: var(--guinea-yellow); /* Hover en Jaune Guinée */
+    border-color: var(--guinea-yellow);
+    color: #333; /* Texte noir sur jaune pour la lisibilité */
+}
+
+/* =========================================
+   8. RESPONSIVE (Le mode Téléphone !)
+========================================= */
+/* Ces règles ne s'activent QUE si l'écran fait moins de 768px de large (Tablettes et Mobiles) */
+@media (max-width: 768px) {
+
+    
+    /* Le menu de navigation sera géré par un bouton "burger", on le cache pour l'instant */
+/* On affiche le burger sur mobile */
+    .hamburger {
+        display: block; 
+        cursor: pointer;
+    }
+
+    .hamburger .bar {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        transition: all 0.3s ease;
+        background-color: var(--primary-color);
+    }
+
+    /* On transforme le menu pour qu'il glisse sur le côté */
+    .nav-links {
+        position: fixed;
+        left: -100%; /* Caché hors de l'écran à gauche par défaut */
+        top: 80px; /* Se place juste sous le header */
+        flex-direction: column; /* Les liens s'empilent de haut en bas */
+        background-color: var(--white);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s ease; /* Animation fluide quand il apparaît */
+        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links li {
+        margin: 25px 0; /* Espace entre les liens sur mobile */
+    }
+
+    /* Cette classe "active" sera déclenchée par notre JavaScript ! */
+    .nav-links.active {
+        left: 0; /* Le menu glisse et s'affiche à l'écran */
+    }
+
+    /* Petite animation bonus : le burger se transforme en croix (X) quand il est ouvert */
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    
+    /* On réduit la taille des titres pour qu'ils rentrent sur l'écran */
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+
+    /* LA MAGIE DU RESPONSIVE : 
+       Les grilles de 3 ou 2 colonnes passent à 1 seule colonne (les éléments s'empilent de haut en bas) */
+    .grid-3-cols, .grid-2-cols {
+        grid-template-columns: 1fr; 
+    }
+    
+    .hero {
+        padding: 60px 0; /* On réduit un peu l'espace en haut et en bas sur mobile */
+    }
+}
+
+/* =========================================
+   9. PIED DE PAGE (FOOTER)
+========================================= */
+footer {
+    background-color: var(--primary-color); /* On utilise le bleu de la Sorbonne pour fermer la page */
+    color: var(--white);
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 40px; /* Laisse un peu d'espace avec la section du dessus */
+}
+
+footer p {
+    font-size: 0.9rem;
+    opacity: 0.8; /* Rend le texte un tout petit peu transparent pour un effet plus doux */
+}
