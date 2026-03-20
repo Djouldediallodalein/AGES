@@ -1,0 +1,83 @@
+/* =========================================
+   SECTION BANNIÈRE (HERO)
+========================================= */
+.hero {
+    background-image: linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 51, 102, 0.7)), url('../assets/icons/images/sorbonne-bg.jpeg');
+    background-size: cover;
+    background-position: center;
+    padding: 140px 0;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    color: var(--white);
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 900px;
+    margin: 0 auto 30px auto;
+    color: var(--white);
+    opacity: 0.9;
+}
+
+.hero .btn-secondary { color: var(--white); border-color: var(--white); }
+.hero .btn-secondary:hover { background-color: var(--white); color: var(--primary-color); }
+
+/* =========================================
+   DESIGN DES CARTES (Missions & Événements)
+========================================= */
+.card {
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    text-align: center;
+    transition: transform 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0,0,0,0.05);
+}
+
+.card-icon { font-size: 3.5rem; margin-bottom: 20px; }
+.card p { font-size: 0.95rem; line-height: 1.5; }
+
+.missions .card:nth-child(1) h3 { color: var(--guinea-red); }
+.missions .card:nth-child(2) h3 { color: var(--guinea-yellow); }
+.missions .card:nth-child(3) h3 { color: var(--guinea-green); }
+
+.event-card {
+    background-color: var(--white);
+    border-left: 5px solid var(--guinea-red);
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* =========================================
+   SECTION GUIDE TEASER
+========================================= */
+.guide-teaser {
+    background-color: var(--sorbonne-navy); 
+    color: var(--text-light);
+    padding: 80px 0;
+}
+
+.guide-teaser h2 { font-size: 2.5rem; color: var(--text-light); }
+.guide-teaser p { color: rgba(255,255,255,0.8); }
+.guide-teaser .btn-primary { background-color: var(--guinea-red); border-color: var(--guinea-red); }
+.guide-teaser .btn-primary:hover { background-color: var(--guinea-yellow); border-color: var(--guinea-yellow); color: #333; }
+
+/* RESPONSIVE HERO */
+@media (max-width: 768px) {
+    .hero { padding: 60px 0; }
+    .hero h1 { font-size: 2.2rem; }
+}
