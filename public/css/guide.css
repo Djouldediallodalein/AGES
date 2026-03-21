@@ -1,0 +1,46 @@
+/* =========================================
+   PAGE GUIDE ÉTUDIANT
+========================================= */
+
+/* Design des cartes d'information */
+.guide-card {
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border-top: 4px solid var(--guinea-yellow); /* Touche de jaune pour cette section */
+}
+
+.guide-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.guide-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--light-bg);
+    padding-bottom: 10px;
+}
+
+/* Design personnalisé pour les listes (pour éviter les vieux points noirs) */
+.guide-list {
+    list-style: none;
+}
+
+.guide-list li {
+    margin-bottom: 15px;
+    padding-left: 25px;
+    position: relative; /* Nécessaire pour placer le "check" au début */
+    line-height: 1.5;
+}
+
+/* L'astuce magique : on crée un vrai "check" vert avant chaque élément de la liste ! */
+.guide-list li::before {
+    content: "✓";
+    color: var(--guinea-green);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 0;
+}

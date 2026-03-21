@@ -1,16 +1,6 @@
 /* =========================================
    PAGE ASSOCIATION (Le Bureau)
 ========================================= */
-.page-header {
-    background-color: var(--sorbonne-navy);
-    color: var(--white);
-    padding: 80px 0 40px 0;
-}
-
-.page-header h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
-}
 
 .team-card {
     background-color: var(--white);

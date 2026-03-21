@@ -1,0 +1,86 @@
+/* =========================================
+   PAGE ÉVÉNEMENTS
+========================================= */
+
+/* --- Design de l'Agenda --- */
+.agenda-card {
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+    display: flex; /* Aligne la date et le texte côte à côte */
+    overflow: hidden; /* Empêche la couleur de la date de déborder des coins arrondis */
+    transition: transform 0.3s ease;
+}
+
+.agenda-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+/* Le bloc avec le chiffre de la date */
+.agenda-date {
+    background-color: var(--guinea-red); /* Rouge pour attirer l'œil */
+    color: var(--white);
+    min-width: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.agenda-date .day {
+    font-size: 2.5rem;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.agenda-date .month {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Les détails de l'événement */
+.agenda-info {
+    padding: 25px;
+    flex-grow: 1; /* Prend tout l'espace restant à droite */
+}
+
+.agenda-info h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+}
+
+.agenda-meta {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+/* Style pour les événements déjà passés */
+.past-event {
+    opacity: 0.6; /* Rend la carte un peu transparente */
+}
+
+.past-event .agenda-date {
+    background-color: #999; /* La date devient grise au lieu de rouge */
+}
+
+/* RESPONSIVE : Sur mobile, on empile la date au-dessus du texte */
+@media (max-width: 768px) {
+    .agenda-card {
+        flex-direction: column;
+    }
+    
+    .agenda-date {
+        min-width: 100%;
+        flex-direction: row; /* Met le jour et le mois côte à côte */
+        gap: 10px;
+        padding: 15px;
+    }
+}
